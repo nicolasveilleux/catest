@@ -9,13 +9,13 @@
 #include <QtSql/qsqlquerymodel.h>
 #include "global.h"
 #include <QProcess>
+#include <QtNetwork/QNetworkInterface>
 
 QTime myTimer;
 int PartCount;
 QString WOString;
 
 QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -43,6 +43,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lcdNumber_2->display(0);
     ui->tabWidget->setStyle(new CustomTabStyle);
     //QApplication::setOverrideCursor(Qt::BlankCursor);
+    QString MACString;
+    QNetworkInterface *Network = new QNetworkInterface;
+    foreach(QNetworkInterface interface,Network->allInterfaces())
+    {
+         MACString = interface.humanReadableName();
+         if(MACString == "wlan0")
+            {
+                MACString = interface.hardwareAddress();
+                qDebug()<< "MAC:" << MACString;
+            }
+
+
+
+    }
+
+
     showFullScreen();
 
 
@@ -82,6 +98,8 @@ void MainWindow :: update(){
     QString CurrentTime;
     CurrentTime = clock.toString();
     ui->label_2->setText(QDateTime::currentDateTime().toString());
+
+
 }
 
 void MainWindow::on_pushButton_pressed()
@@ -229,4 +247,14 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
 void MainWindow::on_pushButton_3_clicked()
 {
     close();
+}
+
+void event(QEvent *event)
+{
+
+    if (event->type() == event->RequestSoftwareInputPanel)
+    {
+       qDebug() <<"CLAVIER";
+       event->accept();
+    }
 }

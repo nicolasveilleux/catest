@@ -12,13 +12,13 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-INCPATH       = -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I. -isystem /usr/include/arm-linux-gnueabihf/qt5 -isystem /usr/include/arm-linux-gnueabihf/qt5/QtWidgets -isystem /usr/include/arm-linux-gnueabihf/qt5/QtSql -isystem /usr/include/arm-linux-gnueabihf/qt5/QtGui -isystem /usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I.
+INCPATH       = -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I. -isystem /usr/include/arm-linux-gnueabihf/qt5 -isystem /usr/include/arm-linux-gnueabihf/qt5/QtWidgets -isystem /usr/include/arm-linux-gnueabihf/qt5/QtNetwork -isystem /usr/include/arm-linux-gnueabihf/qt5/QtSql -isystem /usr/include/arm-linux-gnueabihf/qt5/QtGui -isystem /usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I.
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Sql -lQt5Gui -lQt5Core -lGLESv2 -lpthread 
+LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Network -lQt5Sql -lQt5Gui -lQt5Core -lGLESv2 -lpthread 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /usr/lib/arm-linux-gnueabihf/qt5/bin/qmake
@@ -68,8 +68,11 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_declarative.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_opengl.pri \
@@ -81,6 +84,7 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_printsupport_private.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_sql_private.pri \
+		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_svg.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_testlib_private.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_widgets.pri \
@@ -157,8 +161,11 @@ Makefile: Counteract.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmak
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_declarative.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_opengl.pri \
@@ -170,6 +177,7 @@ Makefile: Counteract.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmak
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_printsupport_private.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_sql_private.pri \
+		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_svg.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_testlib_private.pri \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_widgets.pri \
@@ -199,6 +207,7 @@ Makefile: Counteract.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmak
 		/usr/lib/arm-linux-gnueabihf/libQt5Widgets.prl \
 		/usr/lib/arm-linux-gnueabihf/libQt5Gui.prl \
 		/usr/lib/arm-linux-gnueabihf/libQt5Core.prl \
+		/usr/lib/arm-linux-gnueabihf/libQt5Network.prl \
 		/usr/lib/arm-linux-gnueabihf/libQt5Sql.prl
 	$(QMAKE) -spec linux-g++ -o Makefile Counteract.pro
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf:
@@ -217,8 +226,11 @@ Makefile: Counteract.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmak
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_core_private.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_dbus.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_dbus_private.pri:
+/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_declarative.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_gui.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_gui_private.pri:
+/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_multimedia.pri:
+/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_network.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_network_private.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_opengl.pri:
@@ -230,6 +242,7 @@ Makefile: Counteract.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmak
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_printsupport_private.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_sql.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_sql_private.pri:
+/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_svg.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_testlib.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_testlib_private.pri:
 /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/modules/qt_lib_widgets.pri:
@@ -259,6 +272,7 @@ Counteract.pro:
 /usr/lib/arm-linux-gnueabihf/libQt5Widgets.prl:
 /usr/lib/arm-linux-gnueabihf/libQt5Gui.prl:
 /usr/lib/arm-linux-gnueabihf/libQt5Core.prl:
+/usr/lib/arm-linux-gnueabihf/libQt5Network.prl:
 /usr/lib/arm-linux-gnueabihf/libQt5Sql.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ -o Makefile Counteract.pro
@@ -294,7 +308,7 @@ compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: mainwindow.h
-	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/Desktop/FichierCounteract/GUI/Counteract_V2 -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I/usr/include/c++/4.9 -I/usr/include/arm-linux-gnueabihf/c++/4.9 -I/usr/include/c++/4.9/backward -I/usr/lib/gcc/arm-linux-gnueabihf/4.9/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/4.9/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/arm-linux-gnueabihf/qt5/bin/moc $(DEFINES) -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/Desktop/FichierCounteract/GUI/Counteract_V2 -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtNetwork -I/usr/include/arm-linux-gnueabihf/qt5/QtSql -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I/usr/include/c++/4.9 -I/usr/include/arm-linux-gnueabihf/c++/4.9 -I/usr/include/c++/4.9/backward -I/usr/lib/gcc/arm-linux-gnueabihf/4.9/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/4.9/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

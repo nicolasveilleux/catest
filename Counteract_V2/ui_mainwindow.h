@@ -21,6 +21,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -38,6 +39,7 @@ public:
     QLCDNumber *lcdNumber_2;
     QLabel *label_7;
     QLCDNumber *lcdNumber_3;
+    QTextEdit *textEdit;
     QWidget *tab_2;
     QPushButton *pushButton_5;
     QListView *listView;
@@ -125,6 +127,9 @@ public:
         lcdNumber_3->setSmallDecimalPoint(true);
         lcdNumber_3->setSegmentStyle(QLCDNumber::Flat);
         lcdNumber_3->setProperty("intValue", QVariant(1));
+        textEdit = new QTextEdit(tab);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(410, 170, 104, 75));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));

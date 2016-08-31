@@ -208,6 +208,16 @@ QTabWidget::pane {border: 1px solid #C4C4C3; top: -1px;}</string>
        <number>1</number>
       </property>
      </widget>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>170</y>
+        <width>104</width>
+        <height>75</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
